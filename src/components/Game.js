@@ -1,39 +1,66 @@
 import { React, useState, useEffect } from "react";
-import Room from "./Room";
 import "./Game.css";
 
 function Game() {
-  const [currentRoom, setCurrentRoom] = useState(0);
+  const rooms = {
+    bedroom: {
+      name: "bedroom",
+      roomDescription: "This is your bedroom",
+      lookAround: "THe cage of Waffles is quiet",
+      exits: ["livingRoom"],
+      items: ["Waffles body"],
+    },
+    livingRoom: {
+      name: "living room",
+      roomDescription: "This is your living room",
+      lookAround: "sunflowers in the vase",
+      exits: ["bedroom", "bathroom", "kitchen", "office", "entry"],
+      items: ["sunflower seeds"],
+    },
+  };
+
+  const [currentRoom, setCurrentRoom] = useState(rooms["bedroom"]);
   const [command, setCommand] = useState("");
-  const [description, setDescription] = useState("This is the game.");
+  const [description, setDescription] = useState(
+    "On a sunday morning you wake up in your room. Something seems... off. But you can't quite put your finger on it."
+  );
   const [input, setInput] = useState("");
   const [inventory, setInventory] = useState([]);
 
-  const rooms = [
-    [
-      { id: "00", name: "Bedroom", description: "Description for Room 00" },
-      { id: "01", name: "Living Room", description: "Description for Room 01" },
-      { id: "02", name: "Kitchen", description: "Description for Room 02" },
-    ],
-    [
-      { id: "10", name: "Room 10", description: "Description for Room 10" },
-      { id: "11", name: "Room 11", description: "Description for Room 11" },
-      { id: "12", name: "Room 12", description: "Description for Room 12" },
-    ],
-    [
-      { id: "20", name: "Room 20", description: "Description for Room 20" },
-      { id: "21", name: "Room 21", description: "Description for Room 21" },
-      { id: "22", name: "Room 22", description: "Description for Room 22" },
-    ],
-  ];
-
-  useEffect(() => {}, [currentRoom]);
+  //useEffect(() => {}, [currentRoom]);
 
   const handleInput = () => {
+    //Setting the input on screen and whiping the input field
     setCommand("> " + input);
-    console.log("Input:", input); //DOES SOMETHING ELSE
+    console.log("Input:", input);
     setInput("");
+
+    // Checking for commands
+    if (input.toLowerCase().trim().startsWith("go")) {
+      handleGoCommand();
+
+    } else if (input.toLowerCase().startsWith("use")) {
+      handleUseCommand();
+
+    } else {
+      handleInvalidInput();
+    }
   };
+
+  const handleGoCommand = () =>{
+    console.log("Go command given: " + {input});
+    if (input.toLowerCase().trim().endsWith("living room")){
+      setCurrentRoom(rooms["livingRoom"]);
+    }
+  }
+
+  const handleUseCommand  = () =>{
+    console.log("use");
+  }
+
+  const handleInvalidInput  = () =>{
+    console.log("not a valid command.");
+  }
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
@@ -52,7 +79,16 @@ function Game() {
       </label>
       <div className="output" id="output">
         <p className="command"> {command} </p>
-        <p className="description"> <Room description={description}/> </p>
+        <p className="description">
+          {description} <br />
+          Exits:{" "}
+          {currentRoom.exits.map((exit, index) => (
+            <span key={index}>
+              {index > 0 && ", "}
+              {exit}
+            </span>
+          ))}
+        </p>
       </div>
       <label htmlFor="input" className="label">
         {" "}
