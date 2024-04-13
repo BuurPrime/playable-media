@@ -7,7 +7,7 @@ function Game() {
       name: "bedroom",
       roomDescription: "This is your bedroom",
       lookAround: "THe cage of Waffles is quiet",
-      exits: ["livingRoom"],
+      exits: ["living room"],
       items: ["Waffles body"],
     },
     livingRoom: {
@@ -16,6 +16,13 @@ function Game() {
       lookAround: "sunflowers in the vase",
       exits: ["bedroom", "bathroom", "kitchen", "office", "entry"],
       items: ["sunflower seeds"],
+    },
+    bathroom: {
+      name: "bathroom",
+      roomDescription: "This is your bathroom",
+      lookAround: "The towel is wet from yesterday",
+      exits: ["living room"],
+      items: ["shampoo"],
     },
   };
 
@@ -51,6 +58,9 @@ function Game() {
     console.log("Go command given: " + {input});
     if (input.toLowerCase().trim().endsWith("living room")){
       setCurrentRoom(rooms["livingRoom"]);
+    }
+    else if (input.toLowerCase().trim().endsWith("bathroom")){
+      setCurrentRoom(rooms["bathroom"]);
     }
   }
 
