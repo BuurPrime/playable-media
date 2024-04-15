@@ -27,7 +27,7 @@ function Game() {
   };
 
   const [currentRoom, setCurrentRoom] = useState(rooms["bedroom"]);
-  const [command, setCommand] = useState("");
+  const [command, setCommand] = useState("> ");
   const [description, setDescription] = useState(
     "On a sunday morning you wake up in your room. Something seems... off. But you can't quite put your finger on it."
   );
@@ -56,7 +56,7 @@ function Game() {
 
   const handleGoCommand = () =>{
     console.log("Go command given: " + {input});
-    if (input.toLowerCase().trim().endsWith("living room")){
+    if (input.toLowerCase().trim().endsWith("living room") && rooms.bathroom.exits.includes("living room")){
       setCurrentRoom(rooms["livingRoom"]);
     }
     else if (input.toLowerCase().trim().endsWith("bathroom")){
