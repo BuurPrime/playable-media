@@ -58,9 +58,11 @@ function Game() {
     console.log("Go command given: " + {input});
     if (input.toLowerCase().trim().endsWith("living room") && rooms.bathroom.exits.includes("living room")){
       setCurrentRoom(rooms["livingRoom"]);
+      setDescription(rooms["livingRoom"].roomDescription)
     }
     else if (input.toLowerCase().trim().endsWith("bathroom")){
       setCurrentRoom(rooms["bathroom"]);
+      setDescription(rooms["bathroom"].roomDescription)
     }
   }
 
