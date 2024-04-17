@@ -91,6 +91,7 @@ function Game() {
         <p className="command"> {command} </p>
         <p className="description">
           {description} <br />
+          <br />
           Exits:{" "}
           {currentRoom.exits.map((exit, index) => (
             <span key={index}>
