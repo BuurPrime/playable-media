@@ -1,59 +1,58 @@
-.description{
-    color: #14df15;
-    font-size: large;
-    padding-left: 20px;
+.description {
+  color: #14df15;
+  font-size: large;
+  padding-left: 20px;
 }
 
-.command{
-    color: #14df15;
-    font-size: large;
-    padding-left: 20px;
+.command {
+  color: #14df15;
+  font-size: large;
+  padding-left: 20px;
 }
 
-.top-bar{
-    display: flex;
-    justify-content: center;
-    background-color: #14df15; 
-    width: 100%;
-    font-weight: 600;
-    font-size: 2rem;
-    margin-top: 0;
-    margin-bottom: 150px;
+.top-bar {
+  display: flex;
+  justify-content: center;
+  background-color: #14df15;
+  width: 100%;
+  font-weight: 600;
+  font-size: 2rem;
+  margin-top: 0;
+  margin-bottom: 150px;
 }
 
-.top-bar p{
-    margin: 0;
+.top-bar p {
+  margin: 0;
 }
 
-input[type="text"]{
-    width: 100%;
-    background-color: #191919;
-    color: #14df15;
-    font-family: consolas;
-    border: 1px solid;
-    font-size: medium;
-    padding: 10px 0 10px 10px;
-    margin: 0;
+input[type="text"] {
+  width: 100%;
+  background-color: #191919;
+  color: #14df15;
+  font-family: consolas;
+  border: 1px solid;
+  font-size: medium;
+  padding: 10px 0 10px 10px;
+  margin: 0;
 }
 
 input:focus {
-    outline: none;
- }
-
-.container{
-    width: 50%;
-    height: 100%;
+  outline: none;
 }
 
-
-.output{
-    border: 1px solid;
-    border-color: #14df15;
-    margin-bottom: 20px;
+.container {
+  width: 50%;
+  height: 100%;
 }
 
-.label{
-    color:#14df15;
-    opacity: .6;
-    letter-spacing: .1rem;
+.output {
+  border: 1px solid;
+  border-color: #14df15;
+  margin-bottom: 20px;
+}
+
+.label {
+  color: #14df15;
+  opacity: 0.6;
+  letter-spacing: 0.1rem;
 }

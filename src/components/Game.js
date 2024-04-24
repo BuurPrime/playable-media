@@ -45,34 +45,34 @@ function Game() {
     // Checking for commands
     if (input.toLowerCase().trim().startsWith("go")) {
       handleGoCommand();
-
     } else if (input.toLowerCase().startsWith("use")) {
       handleUseCommand();
-
     } else {
       handleInvalidInput();
     }
   };
 
-  const handleGoCommand = () =>{
-    console.log("Go command given: " + {input});
-    if (input.toLowerCase().trim().endsWith("living room") && rooms.bathroom.exits.includes("living room")){
+  const handleGoCommand = () => {
+    console.log("Go command given: " + { input });
+    if (
+      input.toLowerCase().trim().endsWith("living room") &&
+      rooms.bathroom.exits.includes("living room")
+    ) {
       setCurrentRoom(rooms["livingRoom"]);
-      setDescription(rooms["livingRoom"].roomDescription)
-    }
-    else if (input.toLowerCase().trim().endsWith("bathroom")){
+      setDescription(rooms["livingRoom"].roomDescription);
+    } else if (input.toLowerCase().trim().endsWith("bathroom")) {
       setCurrentRoom(rooms["bathroom"]);
-      setDescription(rooms["bathroom"].roomDescription)
+      setDescription(rooms["bathroom"].roomDescription);
     }
-  }
+  };
 
-  const handleUseCommand  = () =>{
+  const handleUseCommand = () => {
     console.log("use");
-  }
+  };
 
-  const handleInvalidInput  = () =>{
+  const handleInvalidInput = () => {
     console.log("not a valid command.");
-  }
+  };
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
