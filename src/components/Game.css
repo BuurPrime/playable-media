@@ -4,6 +4,13 @@
   padding-left: 20px;
 }
 
+.error-message{
+  color: #14df15;
+  font-style: italic;
+  padding: 0;
+  opacity: 0.6;
+}
+
 .command {
   color: #14df15;
   font-size: large;
@@ -49,6 +56,7 @@ input:focus {
   border: 1px solid;
   border-color: #14df15;
   margin-bottom: 20px;
+  width: 101.5%;
 }
 
 .label {
