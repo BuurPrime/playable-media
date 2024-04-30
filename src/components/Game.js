@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from "react";
 import "./Game.css";
+import { motion } from "framer-motion";
 
 function Game() {
   const rooms = {
@@ -8,50 +9,53 @@ function Game() {
       roomDescription: "This is your bedroom",
       lookAround: "The cage of Waffles is quiet",
       exits: ["living room"],
-      items: ["Waffles body"]
+      items: ["Waffles body"],
     },
     livingRoom: {
       name: "living room",
       roomDescription: "This is your living room",
       lookAround: "sunflowers in the vase",
       exits: ["bedroom", "bathroom", "kitchen", "entry"],
-      items: ["sunflower seeds"]
+      items: ["sunflower seeds"],
     },
     bathroom: {
       name: "bathroom",
       roomDescription: "This is your bathroom",
       lookAround: "The towel is wet from yesterday",
       exits: ["living room"],
-      items: ["shampoo"]
+      items: ["shampoo"],
     },
     kitchen: {
       name: "kitchen",
       roomDescription: "This is your kitchen",
-      lookAround: "All over the table is a mess the from making a cake... You do not recall it being there",
+      lookAround:
+        "All over the table is a mess the from making a cake... You do not recall it being there",
       exits: ["living room", "closet"],
-      items: ["shampoo"]
+      items: ["shampoo"],
     },
     closet: {
       name: "closet",
       roomDescription: "A broom closet.",
       lookAround: "Yup there is a broom in here.",
       exits: ["kitchen"],
-      items: ["pen"]
+      items: ["pen"],
     },
     office: {
       name: "office",
       roomDescription: "This is your office!",
-      lookAround: "You work form home alot, which is also why you don't recall leaving",
+      lookAround:
+        "You work form home alot, which is also why you don't recall leaving",
       exits: ["entry"],
-      items: ["pen"]
+      items: ["pen"],
     },
     entry: {
       name: "entry",
       roomDescription: "This is your office!",
-      lookAround: "You work form home alot, which is also why you don't recall leaving",
+      lookAround:
+        "You work form home alot, which is also why you don't recall leaving",
       exits: ["living room", "office"],
-      items: ["pen"]
-    }
+      items: ["pen"],
+    },
   };
 
   const [currentRoom, setCurrentRoom] = useState(rooms["bedroom"]);
@@ -66,7 +70,6 @@ function Game() {
   //useEffect(() => {}, [currentRoom]);
 
   const handleInput = () => {
-    //Setting the input on screen and whiping the input field
     setCommand("> " + input);
     console.log("Input:", input);
     setInput("");
@@ -90,7 +93,7 @@ function Game() {
       setCurrentRoom(rooms["livingRoom"]);
       setDescription(rooms["livingRoom"].roomDescription);
       setErrorMessage("");
-    } else if(input.toLowerCase().includes(currentRoom.name.toLowerCase())){
+    } else if (input.toLowerCase().includes(currentRoom.name.toLowerCase())) {
       setErrorMessage("You are already here!");
     } else if (
       input.toLowerCase().trim().endsWith("bathroom") &&
@@ -134,10 +137,9 @@ function Game() {
       setCurrentRoom(rooms["bedroom"]);
       setDescription(rooms["bedroom"].roomDescription);
       setErrorMessage("");
+    } else {
+      handleInvalidInput();
     }
-    
-    else{handleInvalidInput();}
-
   };
 
   const handleUseCommand = () => {
@@ -146,7 +148,9 @@ function Game() {
 
   const handleInvalidInput = () => {
     console.log("not a valid command.");
-    setErrorMessage("Not a valid command. Please check your spelling, or click 'help' in the top left corner.");
+    setErrorMessage(
+      "Not a valid command. Please check your spelling, or click 'help' in the top left corner."
+    );
   };
 
   const handleKeyPress = (event) => {
@@ -156,7 +160,13 @@ function Game() {
   };
 
   return (
-    <div className="container">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 5, delay: 0.2 }}
+      className="container"
+    >
       <div className="top-bar">
         <p> WELCOME: IN THE VASE SITS PRETTY FLOWERS </p>
       </div>
@@ -191,7 +201,7 @@ function Game() {
         placeholder="Enter command..."
       />
       <p className="error-message"> {errorMessage} </p>
-    </div>
+    </motion.div>
   );
 }
 
