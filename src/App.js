@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { motion } from "framer-motion"; // Import motion from framer-motion
 import Game from "./components/Game";
 import Welcome from "./pages/Welcome";
+import PreGame from "./pages/PreGame";
 
 function App() {
   return (
@@ -48,6 +49,20 @@ function App() {
               className="App"
             >
               <Game />
+            </motion.div>
+          )}
+        />
+        <Route
+          path="/pregame"
+          element={(
+            <motion.div
+              initial={{ opacity: 0, y: -50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -50 }}
+              transition={{ duration: 0.5 }}
+              className="App"
+            >
+              <PreGame />
             </motion.div>
           )}
         />
