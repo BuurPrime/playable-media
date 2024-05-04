@@ -1,37 +1,24 @@
 import { React, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion"; // Import motion from framer-motion
+import { motion } from "framer-motion";
+import HowToPlayPopUp from "../components/HowToPlay";
 import "./Welcome.css";
 
 // -------------------------------- POP UP ----------------------------------
 
-function HowToPlayPopUp({ onClose }) {
-  return (
-    <div className="popup">
-      <div className="popup-content">
-        <h2> How to play </h2>
-        <p> This is a text adventue game. </p>
-        <p> You can use commands including: </p>
-        <ul>
-          <li> Look around: Examine your surroundings. </li>
-          <li> Go [room]: Move to a different room. </li>
-          <li> Take [item]: Pick up an item. </li>
-          <li> Use [item]: Interact with an item. </li>
-          <li> Inventory: Check your inventory. </li>
-          <li> Help: Get assistance with commands. </li>
-        </ul>
-        <button className="button" onClick={onClose}>
-          Close
-        </button>
-      </div>
-    </div>
-  );
-}
 
 function Welcome() {
   const navigate = useNavigate();
 
+  let audio = new Audio("/bgMusic.mp3");
+
+  const startMusic = () => {
+    audio.volume = 0.1;
+    audio.play()
+  }
+
   const startGame = () => {
+    startMusic();
     navigate("/PreGame");
   };
 

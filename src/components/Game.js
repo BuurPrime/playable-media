@@ -1,6 +1,7 @@
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
 import "./Game.css";
 import { motion } from "framer-motion";
+import HowToPlayPopUp from "../components/HowToPlay";
 
 function Game() {
   const rooms = {
@@ -67,14 +68,11 @@ function Game() {
   const [inventory, setInventory] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
 
-  //useEffect(() => {}, [currentRoom]);
-
   const handleInput = () => {
     setCommand("> " + input);
     console.log("Input:", input);
     setInput("");
 
-    // Checking for commands
     if (input.toLowerCase().trim().startsWith("go")) {
       handleGoCommand();
     } else if (input.toLowerCase().startsWith("use")) {
@@ -149,7 +147,7 @@ function Game() {
   const handleInvalidInput = () => {
     console.log("not a valid command.");
     setErrorMessage(
-      "Not a valid command. Please check your spelling, or click 'help' in the top left corner."
+      "Not a valid command. Please check your spelling, or click 'How to play' to read more."
     );
   };
 
@@ -157,6 +155,16 @@ function Game() {
     if (event.key === "Enter") {
       handleInput();
     }
+  };
+
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const togglePopup = () => {
+    setIsPopupOpen(!isPopupOpen);
+  };
+
+  const closePopup = () => {
+    setIsPopupOpen(false);
   };
 
   return (
@@ -201,6 +209,13 @@ function Game() {
         placeholder="Enter command..."
       />
       <p className="error-message"> {errorMessage} </p>
+      <div className="help-container">
+        <p className="help" onClick={togglePopup}>
+          {" "}
+          How to play{" "}
+        </p>
+        {isPopupOpen && <HowToPlayPopUp onClose={closePopup} />}
+      </div>
     </motion.div>
   );
 }
