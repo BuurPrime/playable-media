@@ -2,7 +2,7 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { motion } from "framer-motion"; // Import motion from framer-motion
 import Game from "./components/Game";
-import Welcome from "./pages/Welcome";
+import Welcome from "./pages/welcome";
 import PreGame from "./pages/PreGame";
 
 function App() {

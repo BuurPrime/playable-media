@@ -80,7 +80,7 @@ function PreGame() {
         )}
         {currentSentenceIndex === dialogue.length - 1 && (
           <>
-          <p className="what-happened"> What did happen last ngiht?</p>
+          <p className="what-happened"> What did happen last night?</p>
           <button className="button start" onClick={startGame}>
             TAKE A LOOK AROUND
           </button>
