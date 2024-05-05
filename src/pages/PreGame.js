@@ -8,7 +8,7 @@ function PreGame() {
   const navigate = useNavigate();
 
   const startGame = () => {
-    navigate("/game");
+    navigate("/playable-media/game");
   };
 
   const [currentSentenceIndex, setCurrentSentenceIndex] = useState(0);

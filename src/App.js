@@ -11,7 +11,7 @@ function App() {
       <Routes>
         {/* Wrap the Route components with motion.div */}
         <Route
-          path="/"
+          path="/playable-media/"
           element={(
             <motion.div
               initial={{ opacity: 0, y: -50 }} // Initial animation properties
@@ -25,7 +25,7 @@ function App() {
           )}
         />
         <Route
-          path="/welcome"
+          path="/playable-media/welcome"
           element={(
             <motion.div
               initial={{ opacity: 0, y: -50 }}
@@ -39,7 +39,7 @@ function App() {
           )}
         />
         <Route
-          path="/game"
+          path="/playable-media/game"
           element={(
             <motion.div
               initial={{ opacity: 0, y: -50 }}
@@ -53,7 +53,7 @@ function App() {
           )}
         />
         <Route
-          path="/pregame"
+          path="/playable-media/pregame"
           element={(
             <motion.div
               initial={{ opacity: 0, y: -50 }}

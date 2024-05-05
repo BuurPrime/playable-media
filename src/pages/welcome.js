@@ -19,7 +19,7 @@ function Welcome() {
 
   const startGame = () => {
     startMusic();
-    navigate("/PreGame");
+    navigate("/playable-media/pregame");
   };
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
