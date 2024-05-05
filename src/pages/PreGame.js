@@ -1,25 +1,8 @@
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import "./PreGame.css";
-
-const TypingAnimation = ({ text }) => {
-  const [displayText, setDisplayText] = useState("");
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    if (currentIndex < text.length) {
-      const typingEffect = setTimeout(() => {
-        setDisplayText((prevText) => prevText + text[currentIndex]);
-        setCurrentIndex((prevIndex) => prevIndex + 1);
-      }, 50);
-
-      return () => clearTimeout(typingEffect);
-    }
-  }, [currentIndex, text]);
-
-  return <div className="dialouge-line">{displayText}</div>;
-};
+import TypingAnimation from "../components/TypingAnimation";
 
 function PreGame() {
   const navigate = useNavigate();
@@ -47,12 +30,12 @@ function PreGame() {
     "You: “I don’t want a new hamster, I want Waffles...”",
     "Partner: “Look, I understand that you are upset, but let's be rational here... ”",
     "You: “... Are you sure that I... Were you home last night?”",
-    "Partner: “No, I was with James. Wait - are you accusing me of killing Waffles?”",
+    "Partner: “No, I was at tennis practice. Wait - are you accusing me of killing Waffles?”",
     "You: “Nono I just.. I-”",
     "Partner: “After all I've done for you... you blame me for your mistakes?”",
     "You: “No I'm sorry, okay! It's nok like that... I'm just trying to figure out what happened and-”",
-    "Partner: “You have always been a little crazy honey... Don't blame me, I would never do anything to hurt you”",
-    "You: “I know, I know...",
+    "Partner: “You have always been a little crazy honey... Don't blame me, this si your own fault”",
+    "You: “I know, I know...”",
     "Partner: “Let's just forget and move on. I'll be in the office if you need me”",
     "You: “Okay...”"
   ];
@@ -80,7 +63,7 @@ function PreGame() {
         )}
         {currentSentenceIndex === dialogue.length - 1 && (
           <>
-          <p className="what-happened"> What did happen last night?</p>
+          <p className="what-happened"> What did happen last night? </p>
           <button className="button start" onClick={startGame}>
             TAKE A LOOK AROUND
           </button>

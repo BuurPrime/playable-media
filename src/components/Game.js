@@ -2,27 +2,31 @@ import { React, useState } from "react";
 import "./Game.css";
 import { motion } from "framer-motion";
 import HowToPlayPopUp from "../components/HowToPlay";
+import TypingAnimation from "../components/TypingAnimation";
 
 function Game() {
   const rooms = {
     bedroom: {
       name: "bedroom",
       roomDescription: "This is your bedroom",
-      lookAround: "The cage of Waffles is quiet",
+      lookAround:
+        "The room is messy, and things are scattered over the floow. Your green party-pants are by your side of the bed.",
       exits: ["living room"],
-      items: ["Waffles body"],
+      items: ["party-pants"],
     },
     livingRoom: {
       name: "living room",
-      roomDescription: "This is your living room",
-      lookAround: "sunflowers in the vase",
+      roomDescription:
+        "The living room is dimly lit. It does not bother you, since your heads hurts.",
+      lookAround:
+        "Bookshelves stand against the biggest walls, and the couch takes centerpeice in the room. Waffles cage is right behind the couch on a long shallow table. You cannot see Waffles inside.",
       exits: ["bedroom", "bathroom", "kitchen", "entry"],
       items: ["sunflower seeds"],
     },
     bathroom: {
       name: "bathroom",
-      roomDescription: "This is your bathroom",
-      lookAround: "The towel is wet from yesterday",
+      roomDescription: "The bathroom is small, but fits all it needs. The bathtub is up against the wall next to the sink, with a mirror cabit above.",
+      lookAround: "You open the cabinet on the wall, only to see a mess - it looks like someone was looking for something in here, but did not find it. Also - to your surprise, the hamper is empty. It is usually filled with sports clothes from tennis practice.",
       exits: ["living room"],
       items: ["shampoo"],
     },
@@ -51,22 +55,26 @@ function Game() {
     },
     entry: {
       name: "entry",
-      roomDescription: "This is your office!",
+      roomDescription: "This is your entry",
       lookAround:
-        "You work form home alot, which is also why you don't recall leaving",
+        "A small shallow table stands against the wall - theres a bowl with keys, a cap, old newspapers that you did not bother thowing out.",
       exits: ["living room", "office"],
       items: ["pen"],
     },
   };
 
+  // --------- STATE ---------
+
   const [currentRoom, setCurrentRoom] = useState(rooms["bedroom"]);
   const [command, setCommand] = useState("> ");
   const [description, setDescription] = useState(
-    "On a sunday morning you wake up in your room. Something seems... off. But you can't quite put your finger on it."
+    "You get up from your bed, standing in your bedroom. You feel... off."
   );
   const [input, setInput] = useState("");
   const [inventory, setInventory] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
+
+  // --------- HANDLE INPUT COMMANDS ---------
 
   const handleInput = () => {
     setCommand("> " + input);
@@ -75,8 +83,17 @@ function Game() {
 
     if (input.toLowerCase().trim().startsWith("go")) {
       handleGoCommand();
+    } else if (input.toLowerCase().endsWith("around")) {
+      handleLookAroundCommand();
+    } else if (
+      input.toLowerCase().startsWith("take") ||
+      input.toLowerCase().startsWith("pick")
+    ) {
+      handleTakeCommand();
     } else if (input.toLowerCase().startsWith("use")) {
       handleUseCommand();
+    } else if (input.toLowerCase().startsWith("inventory")) {
+      handleInventoryCommand();
     } else {
       handleInvalidInput();
     }
@@ -140,8 +157,30 @@ function Game() {
     }
   };
 
+
+  const handleLookAroundCommand = () => {
+    setDescription(currentRoom.lookAround);
+  };
+
+  const handleTakeCommand = () => {
+    var words = input.split(" ");
+    var newItem = words[words.length - 1];
+
+    if (currentRoom.items.includes(newItem)) {
+      setInventory((prevInventory) => [...prevInventory, newItem]);
+      setDescription("You picked up " + newItem.toString() + ".");
+      console.log(newItem)
+    } else {
+      setDescription("There is no such item in this room");
+    }
+  };
+
   const handleUseCommand = () => {
     console.log("use");
+  };
+
+  const handleInventoryCommand = () => {
+    setDescription("Inventory: " + inventory.join(", "));
   };
 
   const handleInvalidInput = () => {
@@ -157,6 +196,8 @@ function Game() {
     }
   };
 
+  // --------- HANDLE POP UP STUFF ---------
+
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const togglePopup = () => {
@@ -167,6 +208,8 @@ function Game() {
     setIsPopupOpen(false);
   };
 
+  // --------- ACTUAL RETURNED HTML ---------
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -176,7 +219,7 @@ function Game() {
       className="container"
     >
       <div className="top-bar">
-        <p> WELCOME: IN THE VASE SITS PRETTY FLOWERS </p>
+        <p> IN THE VASE SITS PRETTY FLOWERS </p>
       </div>
       <label htmlFor="output" className="label">
         {" "}
@@ -184,9 +227,10 @@ function Game() {
       </label>
       <div className="output" id="output">
         <p className="command"> {command} </p>
-        <p className="description">
-          {description} <br />
-          <br />
+        <div className="description">
+          <TypingAnimation text={description} />
+        </div>
+        <p className="exits-text">
           Exits:{" "}
           {currentRoom.exits.map((exit, index) => (
             <span key={index}>
