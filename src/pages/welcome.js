@@ -10,7 +10,7 @@ import "./Welcome.css";
 function Welcome() {
   const navigate = useNavigate();
 
-  let audio = new Audio("https://github.com/BuurPrime/playable-media/blob/master/public/heya.mp3");
+  let audio = new Audio("https://raw.githubusercontent.com/BuurPrime/playable-media/master/public/heya.mp3");
 
   const startMusic = () => {
     audio.volume = 0.1;
