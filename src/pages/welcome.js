@@ -10,7 +10,7 @@ import "./Welcome.css";
 function Welcome() {
   const navigate = useNavigate();
 
-  let audio = new Audio("/bgMusic.mp3");
+  let audio = new Audio(process.env.PUBLIC_URL + "/bgMusic.mp3");
 
   const startMusic = () => {
     audio.volume = 0.1;
