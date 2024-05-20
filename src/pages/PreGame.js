@@ -34,7 +34,7 @@ function PreGame() {
     "You: “No, no I just... I-”",
     "Partner: “After all I've done for you... you blame me for your mistake?”",
     "You: “No I'm sorry, okay! It's not like that... I'm just trying to figure out what happened and-”",
-    "Partner: “You have always been a little crazy honey... Don't blame me, this is your own fault”",
+    "Partner: “You have always been a little crazy honey... Don't blame me, this is your own fault. It was your hamster, and your responsibility",
     "You: “I know, I know...”",
     "Partner: “Let's just forget and move on. I'll be in the office if you need me”",
     "You: “Okay...”"

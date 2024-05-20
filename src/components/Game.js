@@ -1,16 +1,20 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import "./Game.css";
 import { motion } from "framer-motion";
 import HowToPlayPopUp from "../components/HowToPlay";
 import TypingAnimation from "../components/TypingAnimation";
+import AllCluesFound from "./allCluesFound";
 
 function Game() {
+
+  // --------- ROOMS ---------
+
   const rooms = {
     bedroom: {
       name: "bedroom",
       roomDescription: "This is your bedroom",
       lookAround:
-        "The room is messy, and things are scattered over the floor. Your green party-pants are by your side of the bed.",
+        "The room is messy. In a vase by the window sits pretty flowers. They show how much your partner loves you. Your green party-pants are on the floor next to your bed. You only wear them for events.",
       exits: ["living room"],
       items: ["party-pants"],
     },
@@ -19,45 +23,45 @@ function Game() {
       roomDescription:
         "The living room is dimly lit. It does not bother you, since your heads hurts.",
       lookAround:
-        "Bookshelves stand against the biggest walls, and the couch takes centerpeice in the room. Waffles cage is right behind the couch on a long shallow table. You cannot see Waffles inside.",
+        "Bookshelves stand against the biggest walls, and a big couch is in the middle of the room, facing a tv. Waffles cage is right behind the couch on a long shallow table. You cannot see Waffles inside. Next to the cage is a bag of sunflower seeds that you purchased last year, before you knew of Waffles allergies. You thought, that you put those away in the closet...",
       exits: ["bedroom", "bathroom", "kitchen", "entry"],
       items: ["sunflower seeds"],
     },
     bathroom: {
       name: "bathroom",
-      roomDescription: "The bathroom is small, but fits all it needs. The bathtub is up against the wall next to the sink, with a mirror cabit above.",
+      roomDescription: "The bathroom is small, but fits all it needs. The bathtub is up against the wall next to the sink, that has a mirror cabit above.",
       lookAround: "You open the cabinet on the wall, only to see a mess - it looks like someone was looking for something in here, but did not find it. Also - to your surprise, the hamper is empty. It is usually filled with sports clothes from tennis practice.",
       exits: ["living room"],
-      items: ["shampoo"],
+      items: [" "],
     },
     kitchen: {
       name: "kitchen",
-      roomDescription: "This is your kitchen",
+      roomDescription: "All over the table is a mess the from baking something... You partner does not bake.",
       lookAround:
-        "All over the table is a mess the from making a cake... You do not recall it being there",
+        "Hung on the fridge, is an invitation to your friends birthday party. The date was yesterday. Was I out partying all night? Did I black out?",
       exits: ["living room", "closet"],
-      items: ["shampoo"],
+      items: ["invitation"],
     },
     closet: {
       name: "closet",
-      roomDescription: "A broom closet.",
-      lookAround: "Yup there is a broom in here.",
+      roomDescription: "The closet it filled ot the brim with random things, you don't want to look at all day. This includes a broom, canned tomatos, cleaning supplies, and a big bag of hamster food.",
+      lookAround: "On the floor is a sticky note with your handwriting on it saying: 'for Waffles'. ",
       exits: ["kitchen"],
-      items: ["pen"],
+      items: ["sticky note"],
     },
     office: {
       name: "office",
-      roomDescription: "This is your office!",
+      roomDescription: "Your partner is sitting at their desk, busy with something. Your desk next to theirs is tidy, and there are pictures of you two together in heart shaped frames. You clearly love each other.",
       lookAround:
-        "You work form home alot, which is also why you don't recall leaving",
+        "You look at your shared calendar hanging on the wall. You have a date night comming up, and dentist appointment next week. Interestingly, the only plans listed for yesterday were 'wimbledon finals'. Your partner would never miss that.",
       exits: ["entry"],
-      items: ["pen"],
+      items: ["calendar"],
     },
     entry: {
       name: "entry",
-      roomDescription: "This is your entry",
+      roomDescription: "Your entry is small, but fits what it needs.",
       lookAround:
-        "A small shallow table stands against the wall - theres a bowl with keys, a cap, old newspapers that you did not bother thowing out.",
+        "A small shallow table stands against the wall. On top it is a bowl with keys and the new pair of headphones that you partner gifted you - how nice of them",
       exits: ["living room", "office"],
       items: ["pen"],
     },
@@ -73,6 +77,15 @@ function Game() {
   const [input, setInput] = useState("");
   const [inventory, setInventory] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
+  const [allCluesFound, setAllCluesFound] = useState(false);
+
+  // --------- USE EFFECT --------- 
+
+  useEffect(() => {
+    if (inventory.length === 5) {
+      setAllCluesFound(true);
+    }
+  }, [inventory]);
 
   // --------- HANDLE INPUT COMMANDS ---------
 
@@ -164,12 +177,12 @@ function Game() {
 
   const handleTakeCommand = () => {
     var words = input.split(" ");
-    var newItem = words[words.length - 1];
-
+    var newItem = words.slice(1).join(" ");
+  
     if (currentRoom.items.includes(newItem)) {
       setInventory((prevInventory) => [...prevInventory, newItem]);
-      setDescription("You picked up " + newItem.toString() + ".");
-      console.log(newItem)
+      setDescription("You picked up " + newItem + ".");
+      console.log(newItem);
     } else {
       setDescription("There is no such item in this room");
     }
@@ -240,7 +253,7 @@ function Game() {
           ))}
         </p>
       </div>
-      <label htmlFor="input" className="label">
+      <label htmlFor="input"  className="label">
         {" "}
         » TYPE YOUR COMMAND HERE{" "}
       </label>
@@ -250,6 +263,7 @@ function Game() {
         value={input}
         onChange={(e) => setInput(e.target.value)}
         onKeyUp={handleKeyPress}
+        autocomplete="off"
         placeholder="Enter command..."
       />
       <p className="error-message"> {errorMessage} </p>
@@ -260,6 +274,7 @@ function Game() {
         </p>
         {isPopupOpen && <HowToPlayPopUp onClose={closePopup} />}
       </div>
+      {allCluesFound && <AllCluesFound/>}
     </motion.div>
   );
 }
