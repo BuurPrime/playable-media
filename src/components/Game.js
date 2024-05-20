@@ -10,7 +10,7 @@ function Game() {
       name: "bedroom",
       roomDescription: "This is your bedroom",
       lookAround:
-        "The room is messy, and things are scattered over the floow. Your green party-pants are by your side of the bed.",
+        "The room is messy, and things are scattered over the floor. Your green party-pants are by your side of the bed.",
       exits: ["living room"],
       items: ["party-pants"],
     },
