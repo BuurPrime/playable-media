@@ -32,7 +32,7 @@ function Game() {
       roomDescription: "The bathroom is small, but fits all it needs. The bathtub is up against the wall next to the sink, that has a mirror cabit above.",
       lookAround: "You open the cabinet on the wall, only to see a mess - it looks like someone was looking for something in here, but did not find it. Also - to your surprise, the hamper is empty. It is usually filled with sports clothes from tennis practice.",
       exits: ["living room"],
-      items: [" "],
+      items: [""],
     },
     kitchen: {
       name: "kitchen",
@@ -61,9 +61,9 @@ function Game() {
       name: "entry",
       roomDescription: "Your entry is small, but fits what it needs.",
       lookAround:
-        "A small shallow table stands against the wall. On top it is a bowl with keys and the new pair of headphones that you partner gifted you - how nice of them",
+        "A small shallow table stands against the wall. On top it is a bowl with keys and the new pair of headphones that you partner gifted you - how nice of them.",
       exits: ["living room", "office"],
-      items: ["pen"],
+      items: [""],
     },
   };
 

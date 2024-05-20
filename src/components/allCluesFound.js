@@ -1,16 +1,31 @@
 import { React } from "react";
+import { useNavigate } from "react-router-dom";
 import "./allCluesFound.css";
 
 function allCluesFound() {
-    return(
+  const navigate = useNavigate();
+
+  const handleConfrontPartner = () => {
+    navigate("/playable-media/postgame-confront");
+  };
+
+  const handleGoBackToBed = () => {
+    navigate("/playable-media/postgame-bed");
+  };
+
+  return (
     <div className="all-clues-container">
-        <p className="all-clues-text"> By the things you have seen, something seems off, but you are not really sure about it. You have two options: </p>
-        <div className="button-container">
-            <button className="button clues"> CONFRONT PARTNER </button>
-            <button className="button clues"> GO BACK TO BED </button>
-        </div>
+      <p className="all-clues-text">
+        {" "}
+        You feel off. You can't really name your emotions. You should probably
+        just go back to bed.{" "}
+      </p>
+      <div className="button-container">
+        <button className="button clues" onClick={handleConfrontPartner}> CONFRONT PARTNER </button>
+        <button className="button clues" onClick={handleGoBackToBed}> GO BACK TO BED </button>
+      </div>
     </div>
-    )
+  );
 }
 
 export default allCluesFound;

@@ -4,6 +4,8 @@ import { motion } from "framer-motion"; // Import motion from framer-motion
 import Game from "./components/Game";
 import Welcome from "./pages/welcome";
 import PreGame from "./pages/PreGame";
+import PostGameBed from "./pages/PostGameBed";
+import PostGameConfront from "./pages/PostGameConfront";
 
 function App() {
   return (
@@ -63,6 +65,34 @@ function App() {
               className="App"
             >
               <PreGame />
+            </motion.div>
+          )}
+        />
+        <Route
+          path="/playable-media/postgame-bed"
+          element={(
+            <motion.div
+              initial={{ opacity: 0, y: -50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -50 }}
+              transition={{ duration: 0.5 }}
+              className="App"
+            >
+              <PostGameBed />
+            </motion.div>
+          )}
+        />
+        <Route
+          path="/playable-media/postgame-confront"
+          element={(
+            <motion.div
+              initial={{ opacity: 0, y: -50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -50 }}
+              transition={{ duration: 0.5 }}
+              className="App"
+            >
+              <PostGameConfront />
             </motion.div>
           )}
         />
