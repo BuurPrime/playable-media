@@ -14,9 +14,9 @@ function Game() {
       name: "bedroom",
       roomDescription: "This is your bedroom",
       lookAround:
-        "The room is messy. In a vase by the window sits pretty flowers. They show how much your partner loves you. Your green party-pants are on the floor next to your bed. You only wear them for events.",
+        "The room is messy. In a vase by the window sits pretty flowers. They remind you how much your partner loves you. You realize, that you are wearing a single shoe, and that the other one is in the bed. You must have been really tired to not take them off before going to sleep.",
       exits: ["living room"],
-      items: ["party-pants"],
+      items: ["shoe"],
     },
     livingRoom: {
       name: "living room",

@@ -2,8 +2,9 @@ import { React } from "react";
 import { useNavigate } from "react-router-dom";
 import "./allCluesFound.css";
 
-function allCluesFound() {
-  const navigate = useNavigate();
+function AllCluesFound() {
+
+    const navigate = useNavigate();
 
   const handleConfrontPartner = () => {
     navigate("/playable-media/postgame-confront");
@@ -28,4 +29,4 @@ function allCluesFound() {
   );
 }
 
-export default allCluesFound;
+export default AllCluesFound;

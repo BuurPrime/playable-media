@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import "./PreGame.css";
@@ -12,6 +12,7 @@ function PreGame() {
   };
 
   const [currentSentenceIndex, setCurrentSentenceIndex] = useState(0);
+  const lastSentenceRef = useRef(null);
 
   const dialogue = [
     "Partner: “Good morning, sleepyhead. How are you feeling today?”",
@@ -39,7 +40,12 @@ function PreGame() {
     "Partner: “Let's just forget and move on. I'll be in the office if you need me”",
     "You: “Okay...”"
   ];
-  
+
+  useEffect(() => {
+    if (lastSentenceRef.current) {
+      lastSentenceRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [currentSentenceIndex]);
 
   return (
     <motion.div
@@ -50,9 +56,15 @@ function PreGame() {
       className="outer-container-pregame"
     >
       <div className="welcome-content">
-        {dialogue.slice(0, currentSentenceIndex + 1).map((sentence, index) => (
-          <TypingAnimation key={index} text={sentence} />
-        ))}
+        <div className="dialogue-container">
+          {dialogue.slice(0, currentSentenceIndex + 1).map((sentence, index) => (
+            <TypingAnimation
+              key={index}
+              text={sentence}
+              ref={index === currentSentenceIndex ? lastSentenceRef : null}
+            />
+          ))}
+        </div>
         {currentSentenceIndex < dialogue.length - 1 && (
           <button
             className="button"
@@ -63,10 +75,10 @@ function PreGame() {
         )}
         {currentSentenceIndex === dialogue.length - 1 && (
           <>
-          <p className="what-happened"> What did happen last night? </p>
-          <button className="button start" onClick={startGame}>
-            TAKE A LOOK AROUND
-          </button>
+            <p className="what-happened">What did happen last night?</p>
+            <button className="button start" onClick={startGame}>
+              TAKE A LOOK AROUND
+            </button>
           </>
         )}
       </div>

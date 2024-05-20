@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, forwardRef } from "react";
 import "./TypingAnimation.css";
 
-const TypingAnimation = ({ text }) => {
+const TypingAnimation = forwardRef(({ text }, ref) => {
   const [displayText, setDisplayText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -21,7 +21,7 @@ const TypingAnimation = ({ text }) => {
     }
   }, [currentIndex, text]);
 
-  return <div className="dialogue-line">{displayText}</div>;
-};
+  return <div className="dialogue-line" ref={ref}>{displayText}</div>;
+});
 
 export default TypingAnimation;
