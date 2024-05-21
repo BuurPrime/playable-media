@@ -14,16 +14,16 @@ function Game() {
       name: "bedroom",
       roomDescription: "Your bedroom is quite big - for a bedroom that is.",
       lookAround:
-        "The room is messy. In a vase by the window sits pretty flowers. They remind you how much your partner loves you. You realize, that you are wearing a single shoe, and that the other one is in the bed. You must have been really tired to not take them off before going to sleep.",
+        "The room is messy. In a vase by the window sits pretty flowers. They remind you how much your partner loves you. You realize, that you are wearing a single shoe, and that the 𝘴𝘩𝘰𝘦 one is in the bed. You must have been really tired to not take them off before going to sleep.",
       exits: ["living room"],
       items: ["shoe"],
     },
     livingRoom: {
       name: "living room",
       roomDescription:
-        "The living room is dimly lit. It does not bother you, since your head 𝚒𝚗𝚟𝚒𝚝𝚊𝚝𝚒𝚘𝚗",
+        "The living room is dimly lit. It does not bother you, since your head hurts.",
       lookAround:
-        "Bookshelves stand against the biggest walls, and a big couch is in the middle of the room, facing a tv. Waffles cage is right behind the couch on a long shallow table. You cannot see Waffles inside. Next to the cage is a bag of sunflower seeds that you purchased last year, before you knew of Waffles allergies. You thought, that you put those away in the closet...",
+        "Bookshelves stand against the biggest walls, and a big couch is in the middle of the room, facing a tv. Waffles cage is right behind the couch on a long shallow table. You cannot see Waffles inside. Next to the cage is a bag of 𝘴𝘶𝘯𝘧𝘭𝘰𝘸𝘦𝘳 𝘴𝘦𝘦𝘥𝘴 that you purchased last year, before you knew of Waffles allergies. You thought, that you put those away in the closet...",
       exits: ["bedroom", "bathroom", "kitchen", "entry"],
       items: ["sunflower seeds"],
     },
@@ -38,14 +38,14 @@ function Game() {
       name: "kitchen",
       roomDescription: "All over the table is a mess the from baking something... You partner does not bake.",
       lookAround:
-        "Hung on the fridge, is an <i>invitation</i> to your friends birthday party. The date was yesterday. Was I out partying all night? Did I black out?",
+        "Hung on the fridge, is an 𝘪𝘯𝘷𝘪𝘵𝘢𝘵𝘪𝘰𝘯 to your friends birthday party. The date was yesterday. Was I out partying all night? Did I black out?",
       exits: ["living room", "closet"],
       items: ["invitation"],
     },
     closet: {
       name: "closet",
       roomDescription: "The closet is filled ot the brim with random things, you don't want to look at all day. This includes a broom, canned tomatos, cleaning supplies, and a big bag of hamster food.",
-      lookAround: "On the floor is a sticky note with your handwriting on it saying: 'for Waffles'. ",
+      lookAround: "On the floor is a 𝘴𝘵𝘪𝘤𝘬𝘺 𝘯𝘰𝘵𝘦 with your handwriting on it saying: 'for Waffles'. ",
       exits: ["kitchen"],
       items: ["sticky note"],
     },
@@ -53,7 +53,7 @@ function Game() {
       name: "office",
       roomDescription: "Your partner is sitting at their desk, busy with something. Your desk next to theirs is tidy, and there are pictures of you two together in heart shaped frames. You clearly love each other.",
       lookAround:
-        "You look at your shared calendar hanging on the wall. You have a date night comming up, and dentist appointment next week. Interestingly, the only plans listed for yesterday were 'wimbledon finals'. Your partner would never miss that.",
+        "You look at your shared 𝘤𝘢𝘭𝘦𝘯𝘥𝘢𝘳 hanging on the wall. You have a date night comming up, and dentist appointment next week. Interestingly, the only plans listed for yesterday were 'wimbledon finals'. Your partner would never miss that.",
       exits: ["entry"],
       items: ["calendar"],
     },
