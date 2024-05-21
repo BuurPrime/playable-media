@@ -1,8 +1,8 @@
 import { React } from "react";
-import "./FinalPage.css";
 import { motion } from "framer-motion";
+import "./FinalPage.css";
 
-function FinalPage() {
+function FinalPage2() {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -11,9 +11,9 @@ function FinalPage() {
       transition={{ duration: 1, delay: 0.2 }}
     >
       <div className="final-container">
-        <p> The journey might be long.</p>
-        <p> And it wont be easy.</p>
-        <p> But it is worth it in the end.</p>
+        <p> You have taken the first step.</p>
+        <p> You are strong.</p>
+        <p> It will get better. </p>
         <p> Because you deserve better. </p>
 
         <img
@@ -27,11 +27,11 @@ function FinalPage() {
           alt="Read more"
         >
           {" "}
-          A first step{" "}
+          A next step{" "}
         </a>
       </div>
     </motion.div>
   );
 }
 
-export default FinalPage;
+export default FinalPage2;

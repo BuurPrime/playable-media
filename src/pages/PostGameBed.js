@@ -17,14 +17,14 @@ function PreGame() {
   const dialogueConfront = [
     "You walk back to the bedroom, and crawls under the blanket.",
     "...",
-    "You're partner is right.",
+    "Your partner is right.",
     "You have been irrisponsible and rude.",
     "Making things up and blaming you partner, just because you were upset.",
     "That is wrong.",
     "...",
     "Luckily, they still love you.",
-    "You should be thankful. Right?"
-   
+    "You should be thankful.",
+    "Right?"
   ];
 
   useEffect(() => {

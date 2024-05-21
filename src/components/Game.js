@@ -77,7 +77,7 @@ function Game() {
   const [input, setInput] = useState("");
   const [inventory, setInventory] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
-  const [allCluesFound, setAllCluesFound] = useState(false);
+  const [allCluesFound, setAllCluesFound] = useState(true);
 
   // --------- USE EFFECT --------- 
 
