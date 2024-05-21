@@ -14,7 +14,7 @@ function HowToPlayPopUp({ onClose }) {
           <li> Inventory: Check your inventory. </li>
         </ul>
         <p> Have sound ON for the best experience. </p>
-        <p> Hint: Take items that seem interesting. </p>
+        <p> Hint: Look around in every room. Take items that seem interesting. </p>
         <p> Note: Refreshing the page, will restart the game. </p>
         <button className="button" onClick={onClose}>
           Close

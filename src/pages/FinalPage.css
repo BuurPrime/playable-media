@@ -1,0 +1,19 @@
+.final-container {
+  margin-top: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #14df15;
+}
+.image {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.link {
+  color: #14df15;
+  text-decoration: none;
+  font-style: italic; 
+  text-decoration: underline;
+}

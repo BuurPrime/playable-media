@@ -6,6 +6,7 @@ import Welcome from "./pages/welcome";
 import PreGame from "./pages/PreGame";
 import PostGameBed from "./pages/PostGameBed";
 import PostGameConfront from "./pages/PostGameConfront";
+import FinalPage from "./pages/FinalPage";
 
 function App() {
   return (
@@ -79,6 +80,20 @@ function App() {
               className="App"
             >
               <PostGameBed />
+            </motion.div>
+          )}
+        />
+        <Route
+          path="/playable-media/end"
+          element={(
+            <motion.div
+              initial={{ opacity: 0, y: -50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -50 }}
+              transition={{ duration: 0.5 }}
+              className="App"
+            >
+              <FinalPage />
             </motion.div>
           )}
         />
