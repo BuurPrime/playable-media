@@ -12,7 +12,7 @@ function Game() {
   const rooms = {
     bedroom: {
       name: "bedroom",
-      roomDescription: "This is your bedroom",
+      roomDescription: "Your bedroom is quite big - for a bedroom that is.",
       lookAround:
         "The room is messy. In a vase by the window sits pretty flowers. They remind you how much your partner loves you. You realize, that you are wearing a single shoe, and that the other one is in the bed. You must have been really tired to not take them off before going to sleep.",
       exits: ["living room"],
@@ -21,7 +21,7 @@ function Game() {
     livingRoom: {
       name: "living room",
       roomDescription:
-        "The living room is dimly lit. It does not bother you, since your heads hurts.",
+        "The living room is dimly lit. It does not bother you, since your head 𝚒𝚗𝚟𝚒𝚝𝚊𝚝𝚒𝚘𝚗",
       lookAround:
         "Bookshelves stand against the biggest walls, and a big couch is in the middle of the room, facing a tv. Waffles cage is right behind the couch on a long shallow table. You cannot see Waffles inside. Next to the cage is a bag of sunflower seeds that you purchased last year, before you knew of Waffles allergies. You thought, that you put those away in the closet...",
       exits: ["bedroom", "bathroom", "kitchen", "entry"],
@@ -38,13 +38,13 @@ function Game() {
       name: "kitchen",
       roomDescription: "All over the table is a mess the from baking something... You partner does not bake.",
       lookAround:
-        "Hung on the fridge, is an invitation to your friends birthday party. The date was yesterday. Was I out partying all night? Did I black out?",
+        "Hung on the fridge, is an <i>invitation</i> to your friends birthday party. The date was yesterday. Was I out partying all night? Did I black out?",
       exits: ["living room", "closet"],
       items: ["invitation"],
     },
     closet: {
       name: "closet",
-      roomDescription: "The closet it filled ot the brim with random things, you don't want to look at all day. This includes a broom, canned tomatos, cleaning supplies, and a big bag of hamster food.",
+      roomDescription: "The closet is filled ot the brim with random things, you don't want to look at all day. This includes a broom, canned tomatos, cleaning supplies, and a big bag of hamster food.",
       lookAround: "On the floor is a sticky note with your handwriting on it saying: 'for Waffles'. ",
       exits: ["kitchen"],
       items: ["sticky note"],
@@ -59,7 +59,7 @@ function Game() {
     },
     entry: {
       name: "entry",
-      roomDescription: "Your entry is small, but fits what it needs.",
+      roomDescription: "Your entry is narrow, but big windows makes it feel bigger than it is.",
       lookAround:
         "A small shallow table stands against the wall. On top it is a bowl with keys and the new pair of headphones that you partner gifted you - how nice of them.",
       exits: ["living room", "office"],
@@ -77,7 +77,7 @@ function Game() {
   const [input, setInput] = useState("");
   const [inventory, setInventory] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
-  const [allCluesFound, setAllCluesFound] = useState(true);
+  const [allCluesFound, setAllCluesFound] = useState(false);
 
   // --------- USE EFFECT --------- 
 

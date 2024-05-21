@@ -86,6 +86,10 @@ input:focus {
   opacity: 50%;
 }
 
+.clue-item{
+  font-style: italic;
+}
+
 /*---------------- POP UP STYLING ----------------*/
 
 .popup {
