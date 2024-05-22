@@ -19,7 +19,7 @@ function PreGame() {
     "...",
     "Your partner is right.",
     "You have been irrisponsible and rude.",
-    "Making things up and blaming you partner, just because you were upset.",
+    "Making things up and blaming your partner, just because you were upset.",
     "That is wrong.",
     "...",
     "Luckily, they still love you.",

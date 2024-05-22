@@ -25,6 +25,8 @@ function FinalPage() {
           href="https://www.thehotline.org/resources/a-deeper-look-into-gaslighting/"
           className="link"
           alt="Read more"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           {" "}
           A first step{" "}

@@ -11,13 +11,17 @@ function PreGame() {
     navigate("/playable-media/end");
   };
 
+  const goToFinal2 = () => {
+    navigate("/playable-media/end2");
+  };
+
   const [currentSentenceIndex, setCurrentSentenceIndex] = useState(0);
   const lastSentenceRef = useRef(null);
 
   const dialogueConfront = [
     "You: “Hey babe uhm... can we talk?”",
     "Partner: “About what?”",
-    "You: “ It's just that... It seems that I was at a birthday party yesterday... ”",
+    "You: “It's just that... It seems that I was at a birthday party yesterday... ”",
     "Partner: “Yes, you were. So?”",
     "You: “Then... You know... I could not have been home to... feed Waffles”",
     "Partner: “Are you serious right now?”",
@@ -25,7 +29,7 @@ function PreGame() {
     "Partner: “Is it so hard for you to beleive that I can wash my own clothes? You are seriously just taking things out of context, and blowing them up. You are crazy.”",
     "You: “But... The calendar said that you should watch Wimbledon? You always watc-”",
     "Partner: “We watched it together after practice in the lounge.”",
-    "You: “Oh... But then what about the medicine cabitnet - it is all messy, what did you look for? Waffles medicine it not in there...”",
+    "You: “Oh... But then what about the medicine cabinet - it is all messy, what did you look for? Waffles medicine it not in there...”",
     "Partner: “I looked for painkillers, as I hurt my knee at practice. Hoenstly, I can not handle how rude you are right now! You are lucky, that I love you, because I don't think many others would.”",
     "You: “I'm sorry, I just don't understand what happened...”",
     "Partner: “You fed Waffles in a hurry when you came home from the birthday, and forgot that he was allergic - that is what happened, it is your fault.”",
@@ -76,7 +80,7 @@ function PreGame() {
             <button className="button end" onClick={goToFinal}>
               MOVE ON
             </button>
-            <button className="button end" onClick={goToFinal}>
+            <button className="button end" onClick={goToFinal2}>
               "NO"
             </button>
           </div>

@@ -6,7 +6,6 @@ import TypingAnimation from "../components/TypingAnimation";
 import AllCluesFound from "./allCluesFound";
 
 function Game() {
-
   // --------- ROOMS ---------
 
   const rooms = {
@@ -14,7 +13,7 @@ function Game() {
       name: "bedroom",
       roomDescription: "Your bedroom is quite big - for a bedroom that is.",
       lookAround:
-        "The room is messy. In a vase by the window sits pretty flowers. They remind you how much your partner loves you. You realize, that you are wearing a single shoe, and that the 𝘴𝘩𝘰𝘦 one is in the bed. You must have been really tired to not take them off before going to sleep.",
+        "The room is messy. In a vase by the window sits pretty flowers. They remind you how much your partner loves you. You realize, that you are wearing a single shoe, and that the other 𝘴𝘩𝘰𝘦 is in the bed. You must have been really tired to not take them off before going to sleep.",
       exits: ["living room"],
       items: ["shoe"],
     },
@@ -23,35 +22,41 @@ function Game() {
       roomDescription:
         "The living room is dimly lit. It does not bother you, since your head hurts.",
       lookAround:
-        "Bookshelves stand against the biggest walls, and a big couch is in the middle of the room, facing a tv. Waffles cage is right behind the couch on a long shallow table. You cannot see Waffles inside. Next to the cage is a bag of 𝘴𝘶𝘯𝘧𝘭𝘰𝘸𝘦𝘳 𝘴𝘦𝘦𝘥𝘴 that you purchased last year, before you knew of Waffles allergies. You thought, that you put those away in the closet...",
+        "Bookshelves stand against the biggest walls, and a big couch is in the middle of the room, facing a tv. Waffles cage is right behind the couch on a long shallow table. You cannot see Waffles inside. Next to the cage is a bag of 𝘴𝘶𝘯𝘧𝘭𝘰𝘸𝘦𝘳 𝘴𝘦𝘦𝘥𝘴 that you purchased last year, before you knew of Waffles allergies. You thought, that you put those away in the pantry...",
       exits: ["bedroom", "bathroom", "kitchen", "entry"],
       items: ["sunflower seeds"],
     },
     bathroom: {
       name: "bathroom",
-      roomDescription: "The bathroom is small, but fits all it needs. The bathtub is up against the wall next to the sink, that has a mirror cabit above.",
-      lookAround: "You open the cabinet on the wall, only to see a mess - it looks like someone was looking for something in here, but did not find it. Also - to your surprise, the hamper is empty. It is usually filled with sports clothes from tennis practice.",
+      roomDescription:
+        "The bathroom is small, but fits all it needs. The bathtub is up against the wall next to the sink, that has a mirror cabit above.",
+      lookAround:
+        "You open the cabinet on the wall, only to see a mess - it looks like someone was looking for something in here, but did not find it. Also - to your surprise, the hamper is empty. It is usually filled with sports clothes from tennis practice.",
       exits: ["living room"],
       items: [""],
     },
     kitchen: {
       name: "kitchen",
-      roomDescription: "All over the table is a mess the from baking something... You partner does not bake.",
+      roomDescription:
+        "On the counter is a pizza box with one slice leftover topped with olives. You don't like olives.",
       lookAround:
-        "Hung on the fridge, is an 𝘪𝘯𝘷𝘪𝘵𝘢𝘵𝘪𝘰𝘯 to your friends birthday party. The date was yesterday. Was I out partying all night? Did I black out?",
-      exits: ["living room", "closet"],
+        "Hung on the fridge, is an 𝘪𝘯𝘷𝘪𝘵𝘢𝘵𝘪𝘰𝘯 to your friends birthday party. The time and date says yesterday evening.",
+      exits: ["living room", "pantry"],
       items: ["invitation"],
     },
-    closet: {
-      name: "closet",
-      roomDescription: "The closet is filled ot the brim with random things, you don't want to look at all day. This includes a broom, canned tomatos, cleaning supplies, and a big bag of hamster food.",
-      lookAround: "On the floor is a 𝘴𝘵𝘪𝘤𝘬𝘺 𝘯𝘰𝘵𝘦 with your handwriting on it saying: 'for Waffles'. ",
+    pantry: {
+      name: "pantry",
+      roomDescription:
+        "The pantry is filled ot the brim with random things, you don't want to look at all day. This includes a broom, canned tomatos, cleaning supplies, and a big bag of hamster food.",
+      lookAround:
+        "On the floor is a 𝘴𝘵𝘪𝘤𝘬𝘺 𝘯𝘰𝘵𝘦 with your handwriting on it saying: 'for Waffles'. ",
       exits: ["kitchen"],
       items: ["sticky note"],
     },
     office: {
       name: "office",
-      roomDescription: "Your partner is sitting at their desk, busy with something. Your desk next to theirs is tidy, and there are pictures of you two together in heart shaped frames. You clearly love each other.",
+      roomDescription:
+        "Your partner is sitting at their desk, busy with something. Your desk next to theirs is tidy, and there are pictures of you two together in heart shaped frames. You clearly love each other.",
       lookAround:
         "You look at your shared 𝘤𝘢𝘭𝘦𝘯𝘥𝘢𝘳 hanging on the wall. You have a date night comming up, and dentist appointment next week. Interestingly, the only plans listed for yesterday were 'wimbledon finals'. Your partner would never miss that.",
       exits: ["entry"],
@@ -59,7 +64,8 @@ function Game() {
     },
     entry: {
       name: "entry",
-      roomDescription: "Your entry is narrow, but big windows makes it feel bigger than it is.",
+      roomDescription:
+        "Your entry is narrow, but big windows makes it feel bigger than it is.",
       lookAround:
         "A small shallow table stands against the wall. On top it is a bowl with keys and the new pair of headphones that you partner gifted you - how nice of them.",
       exits: ["living room", "office"],
@@ -77,9 +83,9 @@ function Game() {
   const [input, setInput] = useState("");
   const [inventory, setInventory] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
-  const [allCluesFound, setAllCluesFound] = useState(false);
+  const [allCluesFound, setAllCluesFound] = useState(true);
 
-  // --------- USE EFFECT --------- 
+  // --------- USE EFFECT ---------
 
   useEffect(() => {
     if (inventory.length === 5) {
@@ -138,11 +144,11 @@ function Game() {
       setDescription(rooms["kitchen"].roomDescription);
       setErrorMessage("");
     } else if (
-      input.toLowerCase().trim().endsWith("closet") &&
-      currentRoom.exits.includes("closet")
+      input.toLowerCase().trim().endsWith("pantry") &&
+      currentRoom.exits.includes("pantry")
     ) {
-      setCurrentRoom(rooms["closet"]);
-      setDescription(rooms["closet"].roomDescription);
+      setCurrentRoom(rooms["pantry"]);
+      setDescription(rooms["pantry"].roomDescription);
       setErrorMessage("");
     } else if (
       input.toLowerCase().trim().endsWith("office") &&
@@ -170,7 +176,6 @@ function Game() {
     }
   };
 
-
   const handleLookAroundCommand = () => {
     setDescription(currentRoom.lookAround);
   };
@@ -178,13 +183,15 @@ function Game() {
   const handleTakeCommand = () => {
     var words = input.split(" ");
     var newItem = words.slice(1).join(" ");
-  
-    if (currentRoom.items.includes(newItem)) {
+
+    if (inventory.includes(newItem)) {
+      setDescription("You have already picked up that item.");
+    } else if (currentRoom.items.includes(newItem)) {
       setInventory((prevInventory) => [...prevInventory, newItem]);
       setDescription("You picked up " + newItem + ".");
       console.log(newItem);
     } else {
-      setDescription("There is no such item in this room");
+      setDescription("You can't pick up that item.");
     }
   };
 
@@ -253,7 +260,7 @@ function Game() {
           ))}
         </p>
       </div>
-      <label htmlFor="input"  className="label">
+      <label htmlFor="input" className="label">
         {" "}
         » TYPE YOUR COMMAND HERE{" "}
       </label>
@@ -274,7 +281,7 @@ function Game() {
         </p>
         {isPopupOpen && <HowToPlayPopUp onClose={closePopup} />}
       </div>
-      {allCluesFound && <AllCluesFound/>}
+      {allCluesFound && <AllCluesFound />}
     </motion.div>
   );
 }
