@@ -18,7 +18,7 @@ function AllCluesFound() {
     <div className="all-clues-container">
       <p className="all-clues-text">
         {" "}
-        You feel off. You can't really name your emotions. You should probably
+        You feel off. The things you've found, they don't add up... You can't really name your emotions. You should probably
         just go back to bed.{" "}
       </p>
       <div className="button-container">
